@@ -1,6 +1,7 @@
 package com.buildaant;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,11 @@ public class Ant {
      */
     public void add(AntPiece piece, Player player) throws NotPossibleException {
 
+        if (!pieces.containsKey(player)) {
+            //piece.put(player, new ArrayList<String>());
+        }
+
+        pieces.get(player).add(piece);
     }
     public boolean hasPart(AntPiece piece, Player player) {
         List<AntPiece> playerPieces = pieces.get(player);

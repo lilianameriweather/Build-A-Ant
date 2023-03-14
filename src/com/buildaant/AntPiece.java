@@ -3,6 +3,7 @@ package com.buildaant;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,7 +62,9 @@ enum AntPiece {
      * pass in the dice roll and get the corresponding AntPiece back.
      * (Otherwise, you'll likely have an annoying switch-case in the client.)
      */
-    public static AntPiece get(int diceRoll) {
-        return antPieceMap.get(diceRoll);
+    public static AntPiece get(int roll) {
+        return antPieceMap.get(roll);
     }
+
+
 }
