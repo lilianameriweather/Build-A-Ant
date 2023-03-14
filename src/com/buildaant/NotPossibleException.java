@@ -1,6 +1,6 @@
 package com.buildaant;
 
-class NotPossibleException extends Exception {
+public class NotPossibleException extends Exception {
     public NotPossibleException() {
     }
 

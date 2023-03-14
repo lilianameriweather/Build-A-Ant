@@ -2,20 +2,8 @@ package com.buildaant;
 
 import java.util.Random;
 
-class Dice {
-    private int value;
-
-    public Dice() { // default die sides
-        this.value = 6;
+public class Dice {
+    public static int roll() {
+        return (int) (Math.random() * 6) + 1;
     }
-
-    public Dice(int value) {
-        this.value = value;
-    }
-
-    public int roll() {
-        return (int) (Math.random() * value) + 1;
-    }
-
-
 }
