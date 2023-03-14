@@ -3,30 +3,43 @@ package com.buildaant;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 enum AntPiece {
-    BODY("body"),  // each of these calls the
-    HEAD("head"),  // ctor below, passing in
-    LEGS("legs"),  // the base name of the image text file
-    TAIL("tail"),
-    EYE("eye"),
-    ANTENNA("antenna");
+
+    BODY("1-body"),  // each of these calls the
+    HEAD("2-head"),  // ctor below, passing in
+    LEGS("3-body-and-legs"),  // the base name of the image text file
+    TAIL("4-tail"),
+    EYES("5-head-and-eyes"),
+    ANTENNA("6-antenna");
 
     private String image;
+    private List<String> imageLines;
 
     // ctor - loads each AntPiece's "image" from ascii art text file.
     //  images/body.txt
     //  images/head.txt, etc.
     AntPiece(String imageFile) {
+        String imageFilePath = "images/" + imageFile + ".txt";
+
         try {
-            image = Files.readString(Path.of("images/" + imageFile + ".txt"));
+            image = Files.readString(Path.of(imageFilePath));
+            imageLines = Files.readAllLines(Path.of(imageFilePath));
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<String> getImageLines() {
+        return imageLines;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     @Override
@@ -53,7 +66,7 @@ enum AntPiece {
         antPieceMap.put(2, HEAD);
         antPieceMap.put(3, LEGS);
         antPieceMap.put(4, TAIL);
-        antPieceMap.put(5, EYE);
+        antPieceMap.put(5, EYES);
         antPieceMap.put(6, ANTENNA);
     }
 
