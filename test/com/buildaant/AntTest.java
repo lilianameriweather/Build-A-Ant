@@ -21,7 +21,7 @@ public class AntTest {
 //            ant.add(AntPiece.HEAD);
             ant.add(HEAD);       // Already have this piece: HEAD
 
-//            ant.add(TAIL);       // Only antenna and eyes can be added to head
+            ant.add(TAIL);       // Only antenna and eyes can be added to head
 //            ant.add(LEGS);       // Only antenna and eyes can be added to head
 
 //            ant.add(AntPiece.ANTENNA);       // goes in
