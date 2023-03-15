@@ -14,12 +14,11 @@ import java.util.Scanner;
 
 public class BuildAAntApp {
 
-    //private final Board board = Board.getInstanceOf();
     private final Player player1 = new Player();
     private final Player player2 = new Player("Computer");
     private boolean gameOver = false;
-    private Prompter prompter;
-    private final Scanner scanner = new Scanner(System.in);
+    private final Prompter prompter;
+
 
     public BuildAAntApp(Prompter prompter) {
         this.prompter = prompter;
@@ -29,7 +28,6 @@ public class BuildAAntApp {
         welcome();
         intro();
         String name = promptForPlayerName();
-
         player1.setName(name);
         play();
     }
@@ -42,13 +40,21 @@ public class BuildAAntApp {
             showAnt();
 
             // pause and clear as needed
-            // isComplete();
-            // gameOver = player1.isComplete() || player2.isComplete()
+
+
+            gameOver = player1.getAnt().isComplete() || player2.getAnt().isComplete();
+            if (gameOver) {
+                Player winner = player1.getAnt().isComplete() ? player1 : player2;
+                System.out.println(winner.getName() + " has won!");
+            }
         }
     }
 
     private void showAnt() {
-        System.out.println();
+        System.out.println(player1.getName() + "'s ant:");
+        player1.getAnt().show();
+        System.out.println(player2.getName() + "'s ant:");
+        player2.getAnt().show();
     }
 
     private void rollDice(Player player) {
@@ -62,8 +68,7 @@ public class BuildAAntApp {
 
 
     private void promptForPlayerRoll() {
-        // scanner
-        System.out.println("Press Enter to Roll Dice");
+        prompter.prompt("Press Enter to Roll Dice");
     }
 
     private String promptForPlayerName() {
@@ -71,22 +76,18 @@ public class BuildAAntApp {
 
         boolean validInput = false;
         while (!validInput) {
-            System.out.print("Please enter your name:");
-            String input = scanner.nextLine().trim();
-            if (input.matches("\\d{1,100}")) {
-                if (name.length() > 0 && name.matches("[a-zA-Z]+")) {
-                    break;
-                } else {
-                    System.out.println("Invalid input. Please try again.");
-                }
+            String input = prompter.prompt("Please enter your name:").trim();
+            if (input.matches("([A-Za-z])+")) {
+                name = input;
+                validInput = true;
+            } else {
+                System.out.println("Invalid input. Name cannot be empty or have numbers.");
             }
         }
+        return name;
     }
-    // TODO: Scanner
-    // must be at least one char
-    // ([A-Z][a-z])+
-        return null;
-}
+
+
 
     private void intro() {
         Console.clear();
