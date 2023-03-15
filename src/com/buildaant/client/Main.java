@@ -10,6 +10,5 @@ class Main {
     public static void main(String[] args) {
         BuildAAntApp app = new BuildAAntApp(new Prompter(new Scanner(System.in)));
         app.execute();
-
     }
 }
