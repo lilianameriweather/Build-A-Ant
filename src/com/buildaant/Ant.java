@@ -1,9 +1,8 @@
 package com.buildaant;
 
-
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Ant {
@@ -11,10 +10,6 @@ public class Ant {
     private boolean hasHead = false;
     private boolean hasBody = false;
 
-    /*
-     * Adds the Piece to the Ant, if possible (there are rules around this),
-     * and throws exception to indicate if this is not possible (because of the rules).
-     */
     public void add(AntPiece piece) throws NotPossibleException {
 
         if(!hasHead && !hasBody) {
@@ -46,14 +41,22 @@ public class Ant {
         if(pieces.contains(AntPiece.ANTENNA)){
             System.out.println(AntPiece.ANTENNA);
         }
-        // if the ant has 'antenna' then show antenna => sout AntPiece.ANTENNA
-        // if the ant has head, show head
-        // if ant has head and eyes show EYES
-        //if body, show BODY
-        // if body and legs, show BODY and LEGS
-        // if tail show TAIL
+        if(pieces.contains(AntPiece.HEAD)) {
+            System.out.println(AntPiece.HEAD);
+        }
+        if(pieces.contains(AntPiece.EYES)){
+            System.out.println(AntPiece.EYES);
+        }
+        if(pieces.contains(AntPiece.BODY)){
+            System.out.println(AntPiece.BODY);
+        }
+        if(pieces.contains(AntPiece.LEGS)){
+            System.out.println(AntPiece.LEGS);
+        }
+        if(pieces.contains(AntPiece.TAIL)){
+            System.out.println(AntPiece.TAIL);
+        }
         // call ant.hasPiece(piece)
-
     }
 
     public boolean hasPiece(AntPiece piece) {
