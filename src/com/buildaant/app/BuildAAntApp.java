@@ -60,6 +60,7 @@ public class BuildAAntApp {
     private void rollDice(Player player) {
         try {
             int roll = Dice.roll();
+            System.out.println(player.getName() + " rolled a " + roll);
             player.addPiece(roll);
         } catch (NotPossibleException e) {
             System.out.println(e.getMessage());
