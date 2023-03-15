@@ -111,5 +111,6 @@ public class BuildAAntApp {
             e.printStackTrace();
         }
         Console.blankLines(1);
+        Console.clear();
     }
 }
