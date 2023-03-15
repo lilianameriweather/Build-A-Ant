@@ -106,4 +106,9 @@ public class Ant {
     public boolean isComplete() {
         return pieces.size() == 6;
     }
+
+    @Override
+    public String toString() {
+        return pieces.toString() + ", isComplete=" + isComplete();
+    }
 }
