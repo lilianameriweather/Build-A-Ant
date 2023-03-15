@@ -10,37 +10,12 @@ public class Ant {
     private boolean hasHead = false;
     private boolean hasBody = false;
 
-    /*
-    public void add(AntPiece piece) throws NotPossibleException {
 
-        if(!hasHead && !hasBody) {
-           if(piece == AntPiece.BODY){
-               pieces.add(piece);
-               hasBody = true;
-           }
-           else if (piece == AntPiece.HEAD) {
-               pieces.add(piece);
-               hasHead = true;
-           }
-           else {
-               throw new NotPossibleException("Ant needs a Body and Head first!");
-           }
-        }
-        else {
-            if (!pieces.contains(piece)) {
-                pieces.add(piece);
-            }
-            else {
-                throw new NotPossibleException("Ant already has " + piece);
-            }
-        }
-
-    } */
 
     public void add(AntPiece piece) throws NotPossibleException {
         // --------------------HEAD-BODY-------------------------
         if (hasPiece(piece)) {
-            throw new NotPossibleException("You Already have this piece: " + piece);
+            throw new NotPossibleException("You Already have this piece:\n" + piece);
         }
         if (AntPiece.HEAD == piece) {
             pieces.add(piece);
@@ -81,17 +56,20 @@ public class Ant {
         if(pieces.contains(AntPiece.ANTENNA)){
             System.out.println(AntPiece.ANTENNA);
         }
-        if(pieces.contains(AntPiece.HEAD)) {
-            System.out.println(AntPiece.HEAD);
-        }
-        if(pieces.contains(AntPiece.EYES)){
+//        if(pieces.contains(AntPiece.HEAD)) {
+//            System.out.println(AntPiece.HEAD);
+//        }
+        if(pieces.contains(AntPiece.EYES) && pieces.contains(AntPiece.HEAD)){
             System.out.println(AntPiece.EYES);
         }
-        if(pieces.contains(AntPiece.BODY)){
-            System.out.println(AntPiece.BODY);
+        else if (pieces.contains(AntPiece.HEAD)) {
+            System.out.println(AntPiece.HEAD);
         }
-        if(pieces.contains(AntPiece.LEGS)){
+        if(pieces.contains(AntPiece.LEGS) && pieces.contains(AntPiece.BODY)){
             System.out.println(AntPiece.LEGS);
+        }
+        else if(pieces.contains(AntPiece.BODY)){
+            System.out.println(AntPiece.BODY);
         }
         if(pieces.contains(AntPiece.TAIL)){
             System.out.println(AntPiece.TAIL);
