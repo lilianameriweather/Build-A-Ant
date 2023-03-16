@@ -27,8 +27,9 @@ public class AntTest {
         for (AntPiece piece : AntPiece.values()) {
             try {
                 ant.add(piece);
-            } catch (NotPossibleException e) {
-                assertEquals("Already have this piece: " + piece, e.getMessage());
+            }
+            catch (NotPossibleException e) {
+                assertEquals("        Sorry, you already have this piece: " + piece, e.getMessage());
             }
         }
     }
@@ -55,8 +56,9 @@ public class AntTest {
             ant.add(BODY);
             ant.add(ANTENNA);
             fail("Should have thrown NotPossibleException");
-        } catch (NotPossibleException e) {
-            assertEquals("Only legs and tail can be added to body", e.getMessage());
+        }
+        catch (NotPossibleException e) {
+            assertEquals("        Sorry, only legs and tail can be added to body!", e.getMessage());
             assertTrue(ant.hasPiece(BODY));
             assertFalse(ant.hasPiece(ANTENNA));
         }
@@ -64,8 +66,9 @@ public class AntTest {
         try {
             ant.add(EYES);
             fail("Should have thrown NotPossibleException");
-        } catch (NotPossibleException e) {
-            assertEquals("Only legs and tail can be added to body", e.getMessage());
+        }
+        catch (NotPossibleException e) {
+            assertEquals("        Sorry, only legs and tail can be added to body!", e.getMessage());
             assertFalse(ant.hasPiece(EYES));
         }
     }
@@ -88,7 +91,7 @@ public class AntTest {
             ant.add(TAIL);
             fail("Should have thrown NotPossibleException");
         } catch (NotPossibleException e) {
-            assertEquals("Only antenna and eyes can be added to head", e.getMessage());
+            assertEquals("        Sorry, only antenna and eyes can be added to head!", e.getMessage());
             assertTrue(ant.hasPiece(HEAD));
             assertFalse(ant.hasPiece(TAIL));
         }
@@ -97,7 +100,7 @@ public class AntTest {
             ant.add(LEGS);
             fail("Should have thrown NotPossibleException");
         } catch (NotPossibleException e) {
-            assertEquals("Only antenna and eyes can be added to head", e.getMessage());
+            assertEquals("        Sorry, only antenna and eyes can be added to head!", e.getMessage());
             assertFalse(ant.hasPiece(LEGS));
         }
     }
@@ -133,7 +136,7 @@ public class AntTest {
             ant.add(TAIL);
             fail("Should have thrown NotPossibleException");
         } catch (NotPossibleException e) {
-            assertEquals("Must have head or body first", e.getMessage());
+            assertEquals("        Sorry, you must have head or body first!", e.getMessage());
             assertFalse(ant.hasPiece(TAIL));
         }
         ant.show();
@@ -145,7 +148,7 @@ public class AntTest {
             ant.add(LEGS);
             fail("Should have thrown NotPossibleException");
         } catch (NotPossibleException e) {
-            assertEquals("Must have head or body first", e.getMessage());
+            assertEquals("        Sorry, you must have head or body first!", e.getMessage());
             assertFalse(ant.hasPiece(LEGS));
         }
         ant.show();
@@ -157,7 +160,7 @@ public class AntTest {
             ant.add(ANTENNA);
             fail("Should have thrown NotPossibleException");
         } catch (NotPossibleException e) {
-            assertEquals("Must have head or body first", e.getMessage());
+            assertEquals("        Sorry, you must have head or body first!", e.getMessage());
             assertFalse(ant.hasPiece(ANTENNA));
         }
         ant.show();
@@ -169,7 +172,7 @@ public class AntTest {
             ant.add(EYES);
             fail("Should have thrown NotPossibleException");
         } catch (NotPossibleException e) {
-            assertEquals("Must have head or body first", e.getMessage());
+            assertEquals("        Sorry, you must have head or body first!", e.getMessage());
             assertFalse(ant.hasPiece(EYES));
         }
         ant.show();
