@@ -185,6 +185,7 @@ public class BuildAAntApp {
             e.printStackTrace();
         }
         blankLines(1);
+        pause(1000);
         prompter.prompt("Press Enter to Continue");
         Console.clear();
     }
@@ -201,7 +202,7 @@ public class BuildAAntApp {
         String welcome = "W  E  L  C  O  M  E    T  O    B  U  I  L  D  -  A  -  A  N  T";
         for(int i = 0; i < welcome.length(); i++){
             System.out.print(welcome.charAt(i));
-            Console.pause(2500);
+            Console.pause(100);
         }
         Console.clear();
         blankLines(2);
