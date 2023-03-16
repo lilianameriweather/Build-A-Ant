@@ -66,10 +66,10 @@ public class BuildAAntApp {
         System.out.printf("\n%-80s%-80s\n", player1Ant, player1.getAnt().show());
     }
 
-
     private void rollDice(Player player) {
         try {
             int roll = Dice.roll();
+            System.out.println(player.getName() + " rolled a " + roll);
             player.addPiece(roll);
         } catch (NotPossibleException e) {
             System.out.println(e.getMessage());
@@ -106,12 +106,18 @@ public class BuildAAntApp {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Console.blankLines(3);
+        Console.blankLines(1);
     }
+
 
     private void welcome() {
-        System.out.println("W E L C O M E    T O    B U I L D - A - A N T");
-        System.out.println();
+        Console.clear();
+        try {
+            String introTxt = Files.readString(Path.of("introtxt/welcomebanner.txt"));
+            prompter.info(introTxt);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Console.blankLines(1);
     }
-
 }
