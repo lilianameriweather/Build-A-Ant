@@ -42,10 +42,10 @@ enum AntPiece {
         return image;
     }
 
-    @Override
-    public String toString() {
-        return image;
-    }
+//    @Override
+//    public String toString() {
+//        return image;
+//    }
 
     // statics
     /*
