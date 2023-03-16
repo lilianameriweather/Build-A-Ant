@@ -17,8 +17,8 @@ public class BuildAAntApp {
 
     private final Player player1 = new Player();
     private final Player player2 = new Player("Computer");
-    private final Prompter prompter;
     private boolean gameOver = false;
+    private final Prompter prompter;
 
 
     public BuildAAntApp(Prompter prompter) {
