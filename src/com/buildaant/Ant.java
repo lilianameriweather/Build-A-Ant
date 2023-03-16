@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
+
 import static com.buildaant.AntPiece.*;
 
 
@@ -13,41 +14,34 @@ public class Ant {
     private boolean hasBody = false;
 
 
-
     public void add(AntPiece piece) throws NotPossibleException {
         // --------------------HEAD-BODY-------------------------
-        if(pieces.contains(piece)){
+        if (pieces.contains(piece)) {
             throw new NotPossibleException("Already have this piece:" + piece);
         }
         if (HEAD == piece) {
             pieces.add(piece);
             hasHead = true;
-        }
-        else if (BODY == piece) {
+        } else if (BODY == piece) {
             pieces.add(piece);
             hasBody = true;
         }
         //-----------------4--possible-options-----------------------
         else if (hasHead && hasBody) {
             pieces.add(piece);
-        }
-        else if (hasHead) {
+        } else if (hasHead) {
             if (ANTENNA == piece || EYES == piece) {
                 pieces.add(piece);
-            }
-            else {
+            } else {
                 throw new NotPossibleException("Only antenna and eyes can be added to head.");
             }
-        }
-        else if (hasBody) {
+        } else if (hasBody) {
             if (LEGS == piece || TAIL == piece) {
                 pieces.add(piece);
-            }
-            else {
+            } else {
                 throw new NotPossibleException("Only legs and tail can be added to body.");
             }
-        }
-        else {
+        } else {
             throw new NotPossibleException("Must have head or body first");
         }
     }
@@ -77,12 +71,12 @@ public class Ant {
     public String show() {
         String starter =
                 "\n\n\n" +
-                "      N O\n" +
-                "     A N T\n" +
-                "      T O\n" +
-                "    S H O W\n" +
-                "     Y E T\n" +
-                "\n\n\n\n";
+                        "      N O\n" +
+                        "     A N T\n" +
+                        "      T O\n" +
+                        "    S H O W\n" +
+                        "     Y E T\n" +
+                        "\n\n\n\n";
 
         StringBuilder builder = new StringBuilder((pieces.isEmpty() ? starter : ""));
 
@@ -92,15 +86,13 @@ public class Ant {
 
         if (hasPiece(EYES) && hasPiece(HEAD)) {
             builder.append(EYES.getImage() + "\n");        // 5-head-and-eyes.txt
-        }
-        else if (hasPiece(HEAD) && !hasPiece(EYES)) {
+        } else if (hasPiece(HEAD) && !hasPiece(EYES)) {
             builder.append(HEAD.getImage() + "\n");        // 2-head.txt
         }
 
         if (hasPiece(LEGS) && hasPiece(BODY)) {
             builder.append(LEGS.getImage() + "\n");        // 3-body-and-legs.txt
-        }
-        else if (hasPiece(BODY) && !hasPiece(LEGS)) {
+        } else if (hasPiece(BODY) && !hasPiece(LEGS)) {
             builder.append(BODY.getImage() + "\n");        // 1-body.txt
         }
 

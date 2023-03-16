@@ -17,8 +17,8 @@ public class BuildAAntApp {
 
     private final Player player1 = new Player();
     private final Player player2 = new Player("Computer");
-    private boolean gameOver = false;
     private final Prompter prompter;
+    private boolean gameOver = false;
 
 
     public BuildAAntApp(Prompter prompter) {
@@ -119,5 +119,11 @@ public class BuildAAntApp {
             e.printStackTrace();
         }
         Console.blankLines(1);
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Console.clear();
     }
 }
