@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
+import static com.buildaant.AntPiece.*;
+
 
 public class Ant {
     private final Set<AntPiece> pieces = new HashSet<>();
@@ -51,31 +53,66 @@ public class Ant {
     }
 
 
-    public void show() {
-
-        if(pieces.contains(AntPiece.ANTENNA)){
-            System.out.println(AntPiece.ANTENNA);
-        }
-//        if(pieces.contains(AntPiece.HEAD)) {
+//    public void show() {
+//        if(pieces.contains(AntPiece.ANTENNA)){
+//            System.out.println(AntPiece.ANTENNA);
+//        }
+//        if(pieces.contains(AntPiece.EYES) && pieces.contains(AntPiece.HEAD)){
+//            System.out.println(AntPiece.EYES);
+//        }
+//        else if (pieces.contains(AntPiece.HEAD)) {
 //            System.out.println(AntPiece.HEAD);
 //        }
-        if(pieces.contains(AntPiece.EYES) && pieces.contains(AntPiece.HEAD)){
-            System.out.println(AntPiece.EYES);
+//        if(pieces.contains(AntPiece.LEGS) && pieces.contains(AntPiece.BODY)){
+//            System.out.println(AntPiece.LEGS);
+//        }
+//        else if(pieces.contains(AntPiece.BODY)){
+//            System.out.println(AntPiece.BODY);
+//        }
+//        if(pieces.contains(AntPiece.TAIL)){
+//            System.out.println(AntPiece.TAIL);
+//        }
+//    }
+
+    public String show() {
+        String starter =
+                "\n\n\n" +
+                "      N O\n" +
+                "     A N T\n" +
+                "      T O\n" +
+                "    S H O W\n" +
+                "     Y E T\n" +
+                "\n\n\n\n";
+
+        StringBuilder builder = new StringBuilder((pieces.isEmpty() ? starter : ""));
+
+        if (hasPiece(ANTENNA)) {
+            builder.append(ANTENNA.getImage() + "\n");     // 6-antenna.txt
         }
-        else if (pieces.contains(AntPiece.HEAD)) {
-            System.out.println(AntPiece.HEAD);
+
+        if (hasPiece(EYES) && hasPiece(HEAD)) {
+            builder.append(EYES.getImage() + "\n");        // 5-head-and-eyes.txt
         }
-        if(pieces.contains(AntPiece.LEGS) && pieces.contains(AntPiece.BODY)){
-            System.out.println(AntPiece.LEGS);
+        else if (hasPiece(HEAD) && !hasPiece(EYES)) {
+            builder.append(HEAD.getImage() + "\n");        // 2-head.txt
         }
-        else if(pieces.contains(AntPiece.BODY)){
-            System.out.println(AntPiece.BODY);
+
+        if (hasPiece(LEGS) && hasPiece(BODY)) {
+            builder.append(LEGS.getImage() + "\n");        // 3-body-and-legs.txt
         }
-        if(pieces.contains(AntPiece.TAIL)){
-            System.out.println(AntPiece.TAIL);
+        else if (hasPiece(BODY) && !hasPiece(LEGS)) {
+            builder.append(BODY.getImage() + "\n");        // 1-body.txt
         }
-        // call ant.hasPiece(piece)
+
+        if (hasPiece(TAIL)) {
+            builder.append(TAIL.getImage() + "\n");        // 4-tail.txt
+        }
+
+        String fullImage = builder.toString();
+        System.out.println(fullImage);
+        return fullImage;
     }
+
 
     public boolean hasPiece(AntPiece piece) {
         return pieces.contains(piece);

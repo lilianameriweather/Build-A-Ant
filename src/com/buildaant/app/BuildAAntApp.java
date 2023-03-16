@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Scanner;
 
 public class BuildAAntApp {
@@ -50,11 +51,19 @@ public class BuildAAntApp {
         }
     }
 
+//    private void showAnt() {
+//        System.out.println(player1.getName() + "'s ant:");
+//        player1.getAnt().show();
+//        System.out.println(player2.getName() + "'s ant:");
+//        player2.getAnt().show();
+//    }
+
     private void showAnt() {
-        System.out.println(player1.getName() + "'s ant:");
-        player1.getAnt().show();
-        System.out.println(player2.getName() + "'s ant:");
-        player2.getAnt().show();
+        String player1Ant = player1.getAnt().show();
+        String player2Ant = player2.getAnt().show();
+        System.out.printf("%-55s %-55s\n", player1.getName() + "'s Ant:", player2.getName() + "'s Ant:");
+        System.out.println("======================================================================");
+        System.out.printf("\n%-80s%-80s\n", player1Ant, player1.getAnt().show());
     }
 
     private void rollDice(Player player) {
@@ -88,8 +97,6 @@ public class BuildAAntApp {
         return name;
     }
 
-
-
     private void intro() {
         Console.clear();
 
@@ -101,6 +108,7 @@ public class BuildAAntApp {
         }
         Console.blankLines(1);
     }
+
 
     private void welcome() {
         Console.clear();
