@@ -2,6 +2,7 @@ package com.buildaant.app;
 
 import com.apps.util.Console;
 import com.apps.util.Prompter;
+import com.buildaant.AntPiece;
 import com.buildaant.Dice;
 import com.buildaant.NotPossibleException;
 import com.buildaant.Player;
@@ -71,74 +72,83 @@ public class BuildAAntApp {
         rollDice(currentPlayer);
     }
 
-    private void play() {
-        int turns = 0;
-        while (!gameOver) {
-            playTurn(currentPlayer);
-
-            if (currentPlayer.getAnt().isComplete()) {
-                if (turns % 2 == 1) {
-                    System.out.println(player1.getName() + " and " + player2.getName() + " both built their ants and tied!");
-                    gameOver = true;
-                } else {
-                    System.out.println(currentPlayer.getName() + " built-a-ant first");
-                    gameOver = true;
-                }
-            }
-            switchCurrentPlayer();
-            if (currentPlayer == player1) {
-                turns++;
-                showAnt();
-            }
-        }
-    }
-
-// pause and clear as needed
 //    private void play() {
+//        int turns = 0;
 //        while (!gameOver) {
+//            playTurn(currentPlayer);
 //
-//            promptForPlayerRoll();
-//            rollDice(player1);
-//            rollDice(player2);
-//            showAnt();
-//
-//            // pause and clear as needed
-//
-//
-//            gameOver = player1.getAnt().isComplete() || player2.getAnt().isComplete();
-//            if (gameOver) {
-//                Player winner = player1.getAnt().isComplete() ? player1 : player2;
-//                System.out.println(winner.getName() + " has won!");
+//            if (currentPlayer.getAnt().isComplete()) {
+//                if (turns % 2 == 1) {
+//                    System.out.println(player1.getName() + " and " + player2.getName() + " both built their ants and tied!");
+//                    gameOver = true;
+//                } else {
+//                    System.out.println(currentPlayer.getName() + " built-a-ant first");
+//                    gameOver = true;
+//                }
+//            }
+//            switchCurrentPlayer();
+//            if (currentPlayer == player1) {
+//                turns++;
+//                showAnt();
 //            }
 //        }
 //    }
 
-    private void showAnt() {
-        System.out.println("===========================");
-        System.out.println(player1.getName() + "'s ant:");
-        System.out.println("===========================");
-        player1.getAnt().show();
-        System.out.println("===========================");
-        System.out.println(player2.getName() + "'s ant:");
-        System.out.println("===========================");
-        player2.getAnt().show();
+ //pause and clear as needed
+    private void play() {
+        while (!gameOver) {
+
+            promptForPlayerRoll();
+            rollDice(player1);
+            rollDice(player2);
+            showAnt();
+
+            // pause and clear as needed
+
+
+            gameOver = player1.getAnt().isComplete() || player2.getAnt().isComplete();
+            if (gameOver) {
+                Player winner = player1.getAnt().isComplete() ? player1 : player2;
+                System.out.println(winner.getName() + " has won!");
+            }
+        }
     }
 
 //    private void showAnt() {
-//        Console.clear();
+//        System.out.println("===========================");
+//        System.out.println(player1.getName() + "'s ant:");
+//        System.out.println("===========================");
+//        player1.getAnt().show();
 //
-//        String player1Ant = player1.getAnt().show();
-//        String player2Ant = player2.getAnt().show();
-//        System.out.println("==================================  ======================================");
-//        System.out.printf("%-55s %-55s\n", player1.getName() + "'s Ant:", player2.getName() + "'s Ant:");
-//        System.out.println("==================================  =====================================");
-//        System.out.printf("\n%-80s%-80s\n", player1Ant, player2Ant);
+//        try {
+//            Thread.sleep(800);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println("===========================");
+//        System.out.println(player2.getName() + "'s ant:");
+//        System.out.println("===========================");
+//        player2.getAnt().show();
 //    }
+
+    private void showAnt() {
+        List<String> player1Lines = player1.getAnt().getImageLines();
+        List<String> player2Lines = player2.getAnt().getImageLines();
+
+        System.out.println("================================      ================================");
+        System.out.printf("%-45s %-45s\n", player1.getName() + "'s Ant:", player2.getName() + "'s Ant:");
+        System.out.println("================================      ================================");
+
+        for (int i = 0; i < player1Lines.size(); i++) {
+            System.out.println(player1Lines.get(i) + "        " + player2Lines.get(i));
+        }
+    }
 
     private void rollDice(Player player) {
         try {
             int roll = Dice.roll();
-            System.out.println(player.getName() + " rolled a " + roll);
+            System.out.println(player.getName() + " rolled a " + roll + ": ");
             player.addPiece(roll);
         } catch (NotPossibleException e) {
             System.out.println(e.getMessage());
@@ -147,7 +157,7 @@ public class BuildAAntApp {
 
 
     private void promptForPlayerRoll() {
-        prompter.prompt("Press Enter to Roll Dice");
+        prompter.prompt("Press Enter to Roll Dice\n");
     }
 
     private String promptForPlayerName() {
