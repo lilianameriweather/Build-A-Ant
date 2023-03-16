@@ -2,7 +2,10 @@ package com.buildaant.app;
 
 import com.apps.util.Console;
 import com.apps.util.Prompter;
-import com.buildaant.*;
+import com.buildaant.AntPiece;
+import com.buildaant.Dice;
+import com.buildaant.NotPossibleException;
+import com.buildaant.Player;
 
 import java.io.File;
 import java.io.IOException;
