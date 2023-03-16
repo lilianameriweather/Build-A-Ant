@@ -16,14 +16,14 @@ public class Ant {
 
     public void add(AntPiece piece) throws NotPossibleException {
         // --------------------HEAD-BODY-------------------------
-        if (hasPiece(piece)) {
-            throw new NotPossibleException("You Already have this piece:\n" + piece);
+        if(pieces.contains(piece)){
+            throw new NotPossibleException("Already have this piece:" + piece);
         }
-        if (AntPiece.HEAD == piece) {
+        if (HEAD == piece) {
             pieces.add(piece);
             hasHead = true;
         }
-        else if (AntPiece.BODY == piece) {
+        else if (BODY == piece) {
             pieces.add(piece);
             hasBody = true;
         }
@@ -32,7 +32,7 @@ public class Ant {
             pieces.add(piece);
         }
         else if (hasHead) {
-            if (AntPiece.ANTENNA == piece || AntPiece.EYES == piece) {
+            if (ANTENNA == piece || EYES == piece) {
                 pieces.add(piece);
             }
             else {
@@ -40,7 +40,7 @@ public class Ant {
             }
         }
         else if (hasBody) {
-            if (AntPiece.LEGS == piece || AntPiece.TAIL == piece) {
+            if (LEGS == piece || TAIL == piece) {
                 pieces.add(piece);
             }
             else {
