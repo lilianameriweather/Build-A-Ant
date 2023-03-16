@@ -1,11 +1,11 @@
 package com.buildaant;
 
-
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static com.buildaant.AntPiece.*;
+import static org.junit.Assert.*;
 
 public class AntTest {
     private Ant ant;
@@ -27,7 +27,8 @@ public class AntTest {
         for (AntPiece piece : AntPiece.values()) {
             try {
                 ant.add(piece);
-            } catch (NotPossibleException e) {
+            }
+            catch (NotPossibleException e) {
                 assertEquals("Already have this piece: " + piece, e.getMessage());
             }
         }
@@ -45,7 +46,7 @@ public class AntTest {
         for (AntPiece piece : AntPiece.values()) {
             assertTrue(ant.hasPiece(piece));
         }
-        assertTrue((ant.isComplete()));
+        assertTrue(ant.isComplete());
         ant.show();
     }
 
@@ -55,19 +56,23 @@ public class AntTest {
             ant.add(BODY);
             ant.add(ANTENNA);
             fail("Should have thrown NotPossibleException");
-        } catch (NotPossibleException e) {
+        }
+        catch (NotPossibleException e) {
             assertEquals("Only legs and tail can be added to body", e.getMessage());
             assertTrue(ant.hasPiece(BODY));
             assertFalse(ant.hasPiece(ANTENNA));
         }
+
         try {
             ant.add(EYES);
             fail("Should have thrown NotPossibleException");
-        } catch (NotPossibleException e) {
+        }
+        catch (NotPossibleException e) {
             assertEquals("Only legs and tail can be added to body", e.getMessage());
             assertFalse(ant.hasPiece(EYES));
         }
     }
+
     @Test
     public void add_shouldAcceptTailAndLegs_ifBodyPresent() throws NotPossibleException {
         ant.add(BODY);
@@ -178,5 +183,4 @@ public class AntTest {
         }
         ant.show();
     }
-
 }
