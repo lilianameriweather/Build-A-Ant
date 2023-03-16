@@ -177,6 +177,7 @@ public class BuildAAntApp {
             e.printStackTrace();
         }
         blankLines(1);
+        pause(1000);
         prompter.prompt("Press Enter to Continue");
         Console.clear();
     }
