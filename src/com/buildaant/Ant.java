@@ -17,7 +17,7 @@ public class Ant {
     public void add(AntPiece piece) throws NotPossibleException {
         // --------------------HEAD-BODY-------------------------
         if (pieces.contains(piece)) {
-            throw new NotPossibleException("Already have this piece:" + piece);
+            throw new NotPossibleException("Sorry, you already have this piece:" + piece);
         }
         if (HEAD == piece) {
             pieces.add(piece);
@@ -33,16 +33,16 @@ public class Ant {
             if (ANTENNA == piece || EYES == piece) {
                 pieces.add(piece);
             } else {
-                throw new NotPossibleException("Only antenna and eyes can be added to head.");
+                throw new NotPossibleException("Sorry, only antenna and eyes can be added to head!");
             }
         } else if (hasBody) {
             if (LEGS == piece || TAIL == piece) {
                 pieces.add(piece);
             } else {
-                throw new NotPossibleException("Only legs and tail can be added to body.");
+                throw new NotPossibleException("Sorry, only legs and tail can be added to body!");
             }
         } else {
-            throw new NotPossibleException("Must have head or body first");
+            throw new NotPossibleException("Sorry, you must have head or body first!");
         }
     }
 

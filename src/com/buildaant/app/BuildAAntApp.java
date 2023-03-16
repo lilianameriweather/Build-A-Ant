@@ -114,18 +114,25 @@ public class BuildAAntApp {
 //    }
 
     private void showAnt() {
+        System.out.println("===========================");
         System.out.println(player1.getName() + "'s ant:");
+        System.out.println("===========================");
         player1.getAnt().show();
+        System.out.println("===========================");
         System.out.println(player2.getName() + "'s ant:");
+        System.out.println("===========================");
         player2.getAnt().show();
     }
 
 //    private void showAnt() {
+//        Console.clear();
+//
 //        String player1Ant = player1.getAnt().show();
 //        String player2Ant = player2.getAnt().show();
+//        System.out.println("==================================  ======================================");
 //        System.out.printf("%-55s %-55s\n", player1.getName() + "'s Ant:", player2.getName() + "'s Ant:");
-//        System.out.println("======================================================================");
-//        System.out.printf("\n%-80s%-80s\n", player1Ant, player1.getAnt().show());
+//        System.out.println("==================================  =====================================");
+//        System.out.printf("\n%-80s%-80s\n", player1Ant, player2Ant);
 //    }
 
     private void rollDice(Player player) {
