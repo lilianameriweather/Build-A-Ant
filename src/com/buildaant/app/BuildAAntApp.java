@@ -2,10 +2,7 @@ package com.buildaant.app;
 
 import com.apps.util.Console;
 import com.apps.util.Prompter;
-import com.buildaant.AntPiece;
-import com.buildaant.Dice;
-import com.buildaant.NotPossibleException;
-import com.buildaant.Player;
+import com.buildaant.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -94,14 +91,17 @@ public class BuildAAntApp {
             if (player1.getAnt().isComplete() && player2.getAnt().isComplete()) {
                 System.out.println(player1.getName() + " and " + player2.getName() + " both built their ants and tied!");
                 gameOver = true;
+                gameOver();
                 }
                 else if(player1.getAnt().isComplete()) {
                     System.out.println(player1.getName() + " built-a-ant first!");
                     gameOver = true;
+                    gameOver();
                 }
                 else if (player2.getAnt().isComplete()) {
                 System.out.println(player2.getName() + " built-a-ant first!");
                 gameOver = true;
+                gameOver();
                 }
         }
     }
@@ -193,15 +193,31 @@ public class BuildAAntApp {
         String welcome = "W  E  L  C  O  M  E    T  O    B  U  I  L  D  -  A  -  A  N  T";
         for(int i = 0; i < welcome.length(); i++){
             System.out.print(welcome.charAt(i));
-            Console.pause(2500);
+            Console.pause(100);
         }
         Console.clear();
         blankLines(2);
         System.out.println(Ant.complete);
-        pause(5000);
+        pause(2500);
+
+
         blankLines(1);
         Console.pause(5000);
         Console.clear();
+    }
+
+    private void gameOver() {
+        try {
+            String gameOverTxt = Files.readString(Path.of("introtxt/gameover.txt"));
+            prompter.info(gameOverTxt);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Console.pause(20000);
+        prompter.prompt("Press Enter to Exit");
+        blankLines(2);
+
     }
 
 }
