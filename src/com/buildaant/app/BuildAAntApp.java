@@ -50,68 +50,59 @@ public class BuildAAntApp {
             player2Roll = Dice.roll();
             System.out.println(player1.getName() + " rolled " + player1Roll);
             System.out.println(player2.getName() + " rolled " + player2Roll);
-        }
+            Console.blankLines(1);
+            }
         if (player1Roll > player2Roll) {
             System.out.println(player1.getName() + " goes first.");
-            currentPlayer = player1;
-        }
-        if (player1Roll < player2Roll) {
+            currentPlayer= player1;
+
+            }
+            if (player1Roll < player2Roll) {
             System.out.println(player2.getName() + " goes first.");
             currentPlayer = player2;
-        }
+            }
     }
 
-    private void switchCurrentPlayer() {
-        currentPlayer = currentPlayer == player1 ? player2 : player1;
-    }
-
-    private void playTurn(Player player) {
+    private void playTurn() {
         if (currentPlayer == player1) {
             promptForPlayerRoll();
+        } else {
+            // Add a small delay for the computer player to simulate a more natural flow
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         rollDice(currentPlayer);
+        currentPlayer = (currentPlayer == player1) ? player2 : player1;
     }
 
-//    private void play() {
-//        int turns = 0;
-//        while (!gameOver) {
-//            playTurn(currentPlayer);
-//
-//            if (currentPlayer.getAnt().isComplete()) {
-//                if (turns % 2 == 1) {
-//                    System.out.println(player1.getName() + " and " + player2.getName() + " both built their ants and tied!");
-//                    gameOver = true;
-//                } else {
-//                    System.out.println(currentPlayer.getName() + " built-a-ant first");
-//                    gameOver = true;
-//                }
-//            }
-//            switchCurrentPlayer();
-//            if (currentPlayer == player1) {
-//                turns++;
-//                showAnt();
-//            }
-//        }
-//    }
+    private void playRound() {
+        playTurn();
+        playTurn();
+        showAnt();
+    }
 
- //pause and clear as needed
+
     private void play() {
         while (!gameOver) {
-
-            promptForPlayerRoll();
-            rollDice(player1);
-            rollDice(player2);
-            showAnt();
-
-            // pause and clear as needed
-
-
-            gameOver = player1.getAnt().isComplete() || player2.getAnt().isComplete();
-            if (gameOver) {
-                Player winner = player1.getAnt().isComplete() ? player1 : player2;
-                System.out.println(winner.getName() + " has won!");
+            playRound();
+            if (player1.getAnt().isComplete() && player2.getAnt().isComplete()) {
+                System.out.println(player1.getName() + " and " + player2.getName() + " both built their ants and tied!");
+                gameOver = true;
                 gameOver();
-            }
+                }
+                else if(player1.getAnt().isComplete()) {
+                    System.out.println(player1.getName() + " built-a-ant first!");
+                    gameOver = true;
+                    gameOver();
+                }
+                else if (player2.getAnt().isComplete()) {
+                System.out.println(player2.getName() + " built-a-ant first!");
+                gameOver = true;
+                gameOver();
+                }
         }
     }
 
