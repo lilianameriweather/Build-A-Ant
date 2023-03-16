@@ -29,6 +29,9 @@ public class Player {
         this.name = name;
     }
 
+    public boolean hasWon() {
+        return ant.isComplete();
+    }
 
     public Ant getAnt() {
         return ant;
