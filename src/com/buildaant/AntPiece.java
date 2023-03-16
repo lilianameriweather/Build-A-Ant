@@ -16,6 +16,29 @@ public enum AntPiece {
     EYES("5-head-and-eyes"),
     ANTENNA("6-antenna");
 
+    // statics
+    /*
+     * Stores the mappings from dice roll to corresponding AntPiece object:
+     *
+     * 1 | BODY
+     * 2 | HEAD
+     * 3 | LEGS
+     * 4 | TAIL
+     * 5 | EYE
+     * 6 | ANTENNA
+     */
+    private static final Map<Integer, AntPiece> antPieceMap = new HashMap<>();
+
+    // executes when AntPiece.class is loaded by the ClassLoader.
+    static {
+        antPieceMap.put(1, BODY);
+        antPieceMap.put(2, HEAD);
+        antPieceMap.put(3, LEGS);
+        antPieceMap.put(4, TAIL);
+        antPieceMap.put(5, EYES);
+        antPieceMap.put(6, ANTENNA);
+    }
+
     private String image;
     private List<String> imageLines;
 
@@ -28,47 +51,15 @@ public enum AntPiece {
         try {
             image = Files.readString(Path.of(imageFilePath));
             imageLines = Files.readAllLines(Path.of(imageFilePath));
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public List<String> getImageLines() {
-        return imageLines;
-    }
-
-    public String getImage() {
-        return image;
     }
 
 //    @Override
 //    public String toString() {
 //        return image;
 //    }
-
-    // statics
-    /*
-     * Stores the mappings from dice roll to corresponding AntPiece object:
-     *
-     * 1 | BODY
-     * 2 | HEAD
-     * 3 | LEGS
-     * 4 | TAIL
-     * 5 | EYE
-     * 6 | ANTENNA
-     */
-    private static final Map<Integer,AntPiece> antPieceMap = new HashMap<>();
-
-    // executes when AntPiece.class is loaded by the ClassLoader.
-    static {
-        antPieceMap.put(1, BODY);
-        antPieceMap.put(2, HEAD);
-        antPieceMap.put(3, LEGS);
-        antPieceMap.put(4, TAIL);
-        antPieceMap.put(5, EYES);
-        antPieceMap.put(6, ANTENNA);
-    }
 
     /*
      * Convenience method for controller or other client, so that it can
@@ -77,6 +68,14 @@ public enum AntPiece {
      */
     public static AntPiece get(int roll) {
         return antPieceMap.get(roll);
+    }
+
+    public List<String> getImageLines() {
+        return imageLines;
+    }
+
+    public String getImage() {
+        return image;
     }
 
 

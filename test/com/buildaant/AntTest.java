@@ -90,8 +90,7 @@ public class AntTest {
             ant.add(HEAD);
             ant.add(TAIL);
             fail("Should have thrown NotPossibleException");
-        }
-        catch (NotPossibleException e) {
+        } catch (NotPossibleException e) {
             assertEquals("Only antenna and eyes can be added to head", e.getMessage());
             assertTrue(ant.hasPiece(HEAD));
             assertFalse(ant.hasPiece(TAIL));
@@ -100,8 +99,7 @@ public class AntTest {
         try {
             ant.add(LEGS);
             fail("Should have thrown NotPossibleException");
-        }
-        catch (NotPossibleException e) {
+        } catch (NotPossibleException e) {
             assertEquals("Only antenna and eyes can be added to head", e.getMessage());
             assertFalse(ant.hasPiece(LEGS));
         }
@@ -137,8 +135,7 @@ public class AntTest {
         try {
             ant.add(TAIL);
             fail("Should have thrown NotPossibleException");
-        }
-        catch (NotPossibleException e) {
+        } catch (NotPossibleException e) {
             assertEquals("Must have head or body first", e.getMessage());
             assertFalse(ant.hasPiece(TAIL));
         }
@@ -150,8 +147,7 @@ public class AntTest {
         try {
             ant.add(LEGS);
             fail("Should have thrown NotPossibleException");
-        }
-        catch (NotPossibleException e) {
+        } catch (NotPossibleException e) {
             assertEquals("Must have head or body first", e.getMessage());
             assertFalse(ant.hasPiece(LEGS));
         }
@@ -163,8 +159,7 @@ public class AntTest {
         try {
             ant.add(ANTENNA);
             fail("Should have thrown NotPossibleException");
-        }
-        catch (NotPossibleException e) {
+        } catch (NotPossibleException e) {
             assertEquals("Must have head or body first", e.getMessage());
             assertFalse(ant.hasPiece(ANTENNA));
         }
@@ -176,8 +171,7 @@ public class AntTest {
         try {
             ant.add(EYES);
             fail("Should have thrown NotPossibleException");
-        }
-        catch (NotPossibleException e) {
+        } catch (NotPossibleException e) {
             assertEquals("Must have head or body first", e.getMessage());
             assertFalse(ant.hasPiece(EYES));
         }

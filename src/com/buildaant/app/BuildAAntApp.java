@@ -181,5 +181,11 @@ public class BuildAAntApp {
             e.printStackTrace();
         }
         Console.blankLines(1);
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Console.clear();
     }
 }
