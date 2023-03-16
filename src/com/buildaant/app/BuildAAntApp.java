@@ -2,10 +2,7 @@ package com.buildaant.app;
 
 import com.apps.util.Console;
 import com.apps.util.Prompter;
-import com.buildaant.AntPiece;
-import com.buildaant.Dice;
-import com.buildaant.NotPossibleException;
-import com.buildaant.Player;
+import com.buildaant.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Scanner;
+
+import static com.apps.util.Console.blankLines;
+import static com.apps.util.Console.pause;
 
 public class BuildAAntApp {
 
@@ -178,29 +178,38 @@ public class BuildAAntApp {
 
     private void intro() {
         Console.clear();
-
         try {
             String introTxt = Files.readString(Path.of("introtxt/intro.txt"));
             prompter.info(introTxt);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Console.blankLines(1);
+        blankLines(1);
+        prompter.prompt("Press Enter to Continue");
+        Console.clear();
     }
 
-
     private void welcome() {
+        Console.clear();
         try {
             String introTxt = Files.readString(Path.of("introtxt/welcomebanner.txt"));
             prompter.info(introTxt);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Console.blankLines(1);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        blankLines(1);
+        String welcome = "W  E  L  C  O  M  E    T  O    B  U  I  L  D  -  A  -  A  N  T";
+        for(int i = 0; i < welcome.length(); i++){
+            System.out.print(welcome.charAt(i));
+            Console.pause(2500);
         }
+        Console.clear();
+        blankLines(2);
+        System.out.println(Ant.complete);
+        pause(5000);
+        blankLines(1);
+        Console.pause(5000);
+        Console.clear();
     }
+
 }
