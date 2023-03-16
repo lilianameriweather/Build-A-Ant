@@ -110,6 +110,7 @@ public class BuildAAntApp {
             if (gameOver) {
                 Player winner = player1.getAnt().isComplete() ? player1 : player2;
                 System.out.println(winner.getName() + " has won!");
+                gameOver();
             }
         }
     }
@@ -201,15 +202,31 @@ public class BuildAAntApp {
         String welcome = "W  E  L  C  O  M  E    T  O    B  U  I  L  D  -  A  -  A  N  T";
         for(int i = 0; i < welcome.length(); i++){
             System.out.print(welcome.charAt(i));
-            Console.pause(2500);
+            Console.pause(100);
         }
         Console.clear();
         blankLines(2);
         System.out.println(Ant.complete);
-        pause(5000);
+        pause(2500);
+
+
         blankLines(1);
         Console.pause(5000);
         Console.clear();
+    }
+
+    private void gameOver() {
+        try {
+            String gameOverTxt = Files.readString(Path.of("introtxt/gameover.txt"));
+            prompter.info(gameOverTxt);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Console.pause(20000);
+        prompter.prompt("Press Enter to Exit");
+        blankLines(2);
+
     }
 
 }
