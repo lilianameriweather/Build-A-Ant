@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-enum AntPiece {
+public enum AntPiece {
 
     BODY("1-body"),  // each of these calls the
     HEAD("2-head"),  // ctor below, passing in
