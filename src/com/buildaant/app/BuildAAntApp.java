@@ -18,8 +18,8 @@ public class BuildAAntApp {
 
     private final Player player1 = new Player();
     private final Player player2 = new Player("Computer");
-    private boolean gameOver = false;
     private final Prompter prompter;
+    private boolean gameOver = false;
     private Player currentPlayer;
 
 
@@ -50,15 +50,15 @@ public class BuildAAntApp {
             player2Roll = Dice.roll();
             System.out.println(player1.getName() + " rolled " + player1Roll);
             System.out.println(player2.getName() + " rolled " + player2Roll);
-            }
-            if (player1Roll > player2Roll) {
+        }
+        if (player1Roll > player2Roll) {
             System.out.println(player1.getName() + " goes first.");
-            currentPlayer= player1;
-            }
-            if (player1Roll < player2Roll) {
+            currentPlayer = player1;
+        }
+        if (player1Roll < player2Roll) {
             System.out.println(player2.getName() + " goes first.");
             currentPlayer = player2;
-            }
+        }
     }
 
     private void switchCurrentPlayer() {
@@ -190,7 +190,6 @@ public class BuildAAntApp {
 
 
     private void welcome() {
-        Console.clear();
         try {
             String introTxt = Files.readString(Path.of("introtxt/welcomebanner.txt"));
             prompter.info(introTxt);
@@ -199,10 +198,9 @@ public class BuildAAntApp {
         }
         Console.blankLines(1);
         try {
-            Thread.sleep(20000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Console.clear();
     }
 }
