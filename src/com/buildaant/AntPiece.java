@@ -9,24 +9,23 @@ import java.util.Map;
 
 public enum AntPiece {
 
-    BODY("1-body"),  // each of these calls the
-    HEAD("2-head"),  // ctor below, passing in
-    LEGS("3-body-and-legs"),  // the base name of the image text file
+    BODY("1-body"),             // each of these calls the
+    HEAD("2-head"),             // ctor below, passing in
+    LEGS("3-body-and-legs"),    // the base name of the image text file
     TAIL("4-tail"),
     EYES("5-head-and-eyes"),
     ANTENNA("6-antenna");
 
-    // statics
-    /*
-     * Stores the mappings from dice roll to corresponding AntPiece object:
-     *
-     * 1 | BODY
-     * 2 | HEAD
-     * 3 | LEGS
-     * 4 | TAIL
-     * 5 | EYE
-     * 6 | ANTENNA
-     */
+
+    // Stores the mappings from dice roll to corresponding AntPiece object:
+     //
+     // 1 | BODY
+     // 2 | HEAD
+     // 3 | LEGS
+     // 4 | TAIL
+     // 5 | EYE
+     // 6 | ANTENNA
+
     private static final Map<Integer, AntPiece> antPieceMap = new HashMap<>();
 
     // executes when AntPiece.class is loaded by the ClassLoader.
@@ -42,9 +41,7 @@ public enum AntPiece {
     private String image;
     private List<String> imageLines;
 
-    // ctor - loads each AntPiece's "image" from ascii art text file.
-    //  images/body.txt
-    //  images/head.txt, etc.
+    // constructor - loads each AntPiece's "image" from ascii art text file.
     AntPiece(String imageFile) {
         String imageFilePath = "images/" + imageFile + ".txt";
 
@@ -56,16 +53,7 @@ public enum AntPiece {
         }
     }
 
-//    @Override
-//    public String toString() {
-//        return image;
-//    }
-
-    /*
-     * Convenience method for controller or other client, so that it can
-     * pass in the dice roll and get the corresponding AntPiece back.
-     * (Otherwise, you'll likely have an annoying switch-case in the client.)
-     */
+    //access methods
     public static AntPiece get(int roll) {
         return antPieceMap.get(roll);
     }
@@ -77,6 +65,4 @@ public enum AntPiece {
     public String getImage() {
         return image;
     }
-
-
 }

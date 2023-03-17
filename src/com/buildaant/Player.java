@@ -29,15 +29,7 @@ public class Player {
         this.name = name;
     }
 
-    public boolean hasWon() {
-        return ant.isComplete();
-    }
-
     public Ant getAnt() {
         return ant;
-    }
-
-    public void setAnt(Ant ant) {
-        this.ant = ant;
     }
 }
