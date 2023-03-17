@@ -27,8 +27,7 @@ public class AntTest {
         for (AntPiece piece : AntPiece.values()) {
             try {
                 ant.add(piece);
-            }
-            catch (NotPossibleException e) {
+            } catch (NotPossibleException e) {
                 assertEquals("        Sorry, you already have this piece: " + piece, e.getMessage());
             }
         }
@@ -56,8 +55,7 @@ public class AntTest {
             ant.add(BODY);
             ant.add(ANTENNA);
             fail("Should have thrown NotPossibleException");
-        }
-        catch (NotPossibleException e) {
+        } catch (NotPossibleException e) {
             assertEquals("        Sorry, only legs and tail can be added to body!", e.getMessage());
             assertTrue(ant.hasPiece(BODY));
             assertFalse(ant.hasPiece(ANTENNA));
@@ -66,8 +64,7 @@ public class AntTest {
         try {
             ant.add(EYES);
             fail("Should have thrown NotPossibleException");
-        }
-        catch (NotPossibleException e) {
+        } catch (NotPossibleException e) {
             assertEquals("        Sorry, only legs and tail can be added to body!", e.getMessage());
             assertFalse(ant.hasPiece(EYES));
         }

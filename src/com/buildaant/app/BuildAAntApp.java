@@ -11,8 +11,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.apps.util.Console.blankLines;
-import static com.apps.util.Console.pause;
+import static com.apps.util.Console.*;
 
 public class BuildAAntApp {
 
@@ -46,33 +45,37 @@ public class BuildAAntApp {
                 System.out.println("It's a tie! Let's roll again...");
             }
             promptForPlayerRoll();
+            pause(750);
+            blankLines(1);
             player1Roll = Dice.roll();
             player2Roll = Dice.roll();
             System.out.println(player1.getName() + " rolled " + player1Roll);
+            pause(750);
+            blankLines(1);
             System.out.println(player2.getName() + " rolled " + player2Roll);
             Console.blankLines(1);
-            }
+        }
         if (player1Roll > player2Roll) {
+            blankLines(1);
             System.out.println(player1.getName() + " goes first.");
-            currentPlayer= player1;
-
-            }
-            if (player1Roll < player2Roll) {
+            currentPlayer = player1;
+        }
+        if (player1Roll < player2Roll) {
             System.out.println(player2.getName() + " goes first.");
             currentPlayer = player2;
-            }
+        }
+        pause(750);
     }
 
     private void playTurn() {
         if (currentPlayer == player1) {
             promptForPlayerRoll();
         } else {
-            // Add a small delay for the computer player to simulate a more natural flow
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            pause(500); // Add a small delay for the computer player to simulate a more natural flow
+            blankLines(1);
+            System.out.print("Computer is now rolling .....");
+            pause(750);
+            blankLines(1);
         }
         rollDice(currentPlayer);
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
@@ -82,6 +85,7 @@ public class BuildAAntApp {
         playTurn();
         playTurn();
         showAnt();
+        pause(500);
     }
 
 
@@ -92,17 +96,15 @@ public class BuildAAntApp {
                 System.out.println(player1.getName() + " and " + player2.getName() + " both built their ants and tied!");
                 gameOver = true;
                 gameOver();
-                }
-                else if(player1.getAnt().isComplete()) {
-                    System.out.println(player1.getName() + " built-a-ant first!");
-                    gameOver = true;
-                    gameOver();
-                }
-                else if (player2.getAnt().isComplete()) {
+            } else if (player1.getAnt().isComplete()) {
+                System.out.println(player1.getName() + " built-a-ant first!");
+                gameOver = true;
+                gameOver();
+            } else if (player2.getAnt().isComplete()) {
                 System.out.println(player2.getName() + " built-a-ant first!");
                 gameOver = true;
                 gameOver();
-                }
+            }
         }
     }
 
@@ -192,22 +194,25 @@ public class BuildAAntApp {
         }
         blankLines(1);
         String welcome = "W  E  L  C  O  M  E    T  O    B  U  I  L  D  -  A  -  A  N  T";
-        for(int i = 0; i < welcome.length(); i++){
+        for (int i = 0; i < welcome.length(); i++) {
             System.out.print(welcome.charAt(i));
-            Console.pause(100);
+            Console.pause(85);
         }
+        pause(750);
+        blankLines(2);
+        prompter.prompt("Press Enter to Continue");
         Console.clear();
         blankLines(2);
         System.out.println(Ant.complete);
-        pause(2500);
-
+        pause(500);
 
         blankLines(1);
-        Console.pause(5000);
+        Console.pause(1000);
         Console.clear();
     }
 
     private void gameOver() {
+        blankLines(3);
         try {
             String gameOverTxt = Files.readString(Path.of("introtxt/gameover.txt"));
             prompter.info(gameOverTxt);
@@ -215,9 +220,10 @@ public class BuildAAntApp {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Console.pause(20000);
+        Console.pause(200);
+        blankLines(4);
         prompter.prompt("Press Enter to Exit");
-        blankLines(2);
+        blankLines(6);
 
     }
 
