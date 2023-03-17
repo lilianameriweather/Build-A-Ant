@@ -108,24 +108,6 @@ public class BuildAAntApp {
         }
     }
 
-//    private void showAnt() {
-//        System.out.println("===========================");
-//        System.out.println(player1.getName() + "'s ant:");
-//        System.out.println("===========================");
-//        player1.getAnt().show();
-//
-//        try {
-//            Thread.sleep(800);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        System.out.println("===========================");
-//        System.out.println(player2.getName() + "'s ant:");
-//        System.out.println("===========================");
-//        player2.getAnt().show();
-//    }
-
     private void showAnt() {
         List<String> player1Lines = player1.getAnt().getImageLines();
         List<String> player2Lines = player2.getAnt().getImageLines();
@@ -225,7 +207,5 @@ public class BuildAAntApp {
         blankLines(4);
         prompter.prompt("Press Enter to Exit");
         blankLines(6);
-
     }
-
 }
