@@ -143,6 +143,7 @@ public class BuildAAntApp {
         try {
             int roll = Dice.roll();
             System.out.println(player.getName() + " rolled a " + roll + ": ");
+            blankLines(1);
             player.addPiece(roll);
         } catch (NotPossibleException e) {
             System.out.println(e.getMessage());
