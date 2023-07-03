@@ -1,3 +1,3 @@
-# JavaProject_TeamN
+# Build-A-Ant
 
 Template repo for Java project
