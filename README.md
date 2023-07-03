@@ -1,3 +1,22 @@
 # Build-A-Ant
 
-Template repo for Java project
+Thank you for playing Build-A-Ant.  The object of the game is to Build-A-Ant by rolling the die.
+
+Each side of the die represents a different part of the ant:
+
+          1| Body
+          2| Head
+          3| Legs
+          4| Tail
+          5| Eyes
+          6| Antenna
+
+1. Players roll a die to see who goes first.
+2. The player who rolls the highest number goes first.
+3. In case of a draw, re-roll until no longer tied.
+4. To start, Players take turns rolling a die to collect parts to build an ant.
+5. Players must roll a 1 or 2 to add the body or head to their Ant.
+6. If players have added a head to their Ant, they can add eyes or antenna.
+7. If players have added a body to their Ant, they can add legs or tail.
+8. The first player to complete their ant wins the game.
+9. In the case where both players complete their ant in the same turn, the game is a draw.
