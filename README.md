@@ -1,5 +1,7 @@
 # Build-A-Ant
 
+## Instructions
+
 Thank you for playing Build-A-Ant.  The object of the game is to Build-A-Ant by rolling the die.
 
 Each side of the die represents a different part of the ant:
@@ -20,3 +22,7 @@ Each side of the die represents a different part of the ant:
 7. If players have added a body to their Ant, they can add legs or tail.
 8. The first player to complete their ant wins the game.
 9. In the case where both players complete their ant in the same turn, the game is a draw.
+
+## Class Diagram
+
+![Class_Diagram](https://github.com/lilianameriweather/Build-A-Ant/assets/78009370/2c00bca3-970c-48c4-9659-814351487c1f)
